@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Barang;
+use App\Models\Kategori;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $kategori = Kategori::all()->count();
+    $barang = Barang::all()->count();
+    return view('index', ['kategori' => $kategori, 'barang' => $barang]);
+})->name('/');
+
+Route::resource('/kategori', 'App\Http\Controllers\KategoriController');
+Route::resource('/barang', 'App\Http\Controllers\KategoriController');
+Route::resource('/distributor', 'App\Http\Controllers\KategoriController');
+Route::resource('/stok', 'App\Http\Controllers\KategoriController');
