@@ -20,16 +20,19 @@
                 <tbody>
                     @forelse ($data as $index => $datas)
                     <tr>
-                        <td class="text-center">{{$index+1}}</td>
-                        <td>{{$datas->nama}}</td>
+                        <td class="text-center">{{ $index + 1 }}</td>
+                        <td>{{ $datas->nama }}</td>
                         <td class="text-center">
-                            <form id="delete-form-{{ $datas->id }}" action="{{ route('kategori.destroy', $datas->id) }}" method="POST" style="display: inline;">
-                                <a href="{{ route('kategori.edit', $datas->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                            @php
+                            // Enkripsi ID
+                            $encryptedId = Crypt::encrypt($datas->id);
+                            @endphp
+                            <form id="delete-form-{{ $encryptedId }}" action="{{ route('kategori.destroy', $encryptedId) }}" method="POST" style="display: inline;">
+                                <a href="{{ route('kategori.edit', $encryptedId) }}" class="btn btn-sm btn-primary">EDIT</a>
                                 @csrf
                                 @method('DELETE')
-                                <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $datas->id }})">HAPUS</button>
+                                <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete('{{ $encryptedId }}')">HAPUS</button>
                             </form>
-
                         </td>
                     </tr>
                     @empty
@@ -38,7 +41,6 @@
                     </div>
                     @endforelse
                 </tbody>
-
             </table>
         </div>
     </div>

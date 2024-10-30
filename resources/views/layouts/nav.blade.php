@@ -1,4 +1,4 @@
-<ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('/')}}">
@@ -41,11 +41,7 @@
             <i class="fas fa-fw fa-users"></i>
             <span>Distributor</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('stok.index') }}">
-            <i class="fas fa-fw fa-archive"></i>
-            <span>Stok</span></a>
-    </li>
+
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
